@@ -1,0 +1,8 @@
+<ul>
+  <li
+    class="restaurant"
+    *ngFor="let restaurant of restaurants"
+    [ngStyle]="{'background-image': 'url('+restaurant.backgroundImageURL+')'}">
+    <span>{{ restaurant.name }}</span>
+  </li>
+</ul>

@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-height: 100%;
+
+  & > .component {
+    flex: 1;
+    height: 100%;
+  }
+
+  & app-detail {
+    height: 100%;
+  }
+
+  & app-list {
+    overflow-y: auto;
+  }
+}
