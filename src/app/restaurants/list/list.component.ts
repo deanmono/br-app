@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Restaurants } from "../restaurants";
+import { RestaurantsService } from "../restaurants.service";
 
 @Component({
   selector: 'app-list',
@@ -7,11 +7,16 @@ import { Restaurants } from "../restaurants";
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  @Input() restaurants: Restaurants;
+  @Input() restaurants;
 
-  constructor() { }
+  constructor(
+    private restaurantsService: RestaurantsService
+  ) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  selectRestaurant(index) {
+    this.restaurantsService.selectedRestaurant(this.restaurants[index]);
   }
 
 }

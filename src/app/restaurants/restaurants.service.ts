@@ -1,18 +1,21 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable, throwError } from "rxjs";
+import { Observable, throwError, Subject } from "rxjs";
 import { catchError, map } from 'rxjs/operators';
 
 import { Restaurants } from "./restaurants";
+import { Restaurant } from "./restaurant";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class RestaurantsService {
+  restaurant: Restaurant;
+  restaurantChange: Subject<Restaurant> = new Subject<Restaurant>();
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor (private http: HttpClient) {
+    this.restaurantChange.subscribe((value: Restaurant) => {
+      this.restaurant = value;
+    });
+  }
 
   private handleError(error: any) {
     console.error('Restaurants Service Error:', error);
@@ -25,5 +28,9 @@ export class RestaurantsService {
         map(response => response['restaurants']),
         catchError(this.handleError)
       );
+  }
+
+  selectedRestaurant(restaurant) {
+    this.restaurantChange.next(restaurant);
   }
 }

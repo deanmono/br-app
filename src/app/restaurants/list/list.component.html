@@ -1,8 +1,15 @@
 <ul>
   <li
     class="restaurant"
-    *ngFor="let restaurant of restaurants"
-    [ngStyle]="{'background-image': 'url('+restaurant.backgroundImageURL+')'}">
-    <span>{{ restaurant.name }}</span>
+    *ngFor="let restaurant of restaurants; index as i"
+    [ngStyle]="{'background-image': 'url('+restaurant.backgroundImageURL+')'}"
+    (click)="selectRestaurant(i)">
+
+    <div class="cover">
+      <div class="details">
+        <div class="name">{{ restaurant.name }}</div>
+        <div class="category">{{ restaurant.category }}</div>
+      </div>
+    </div>
   </li>
 </ul>

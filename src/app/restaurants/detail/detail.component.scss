@@ -1,0 +1,37 @@
+@import "../variables";
+
+header {
+  background: $dark-green;
+  height: 60px;
+  color: white;
+  display: flex;
+  justify-content: left;
+  align-content: center;
+  align-items: center;
+  padding: 0 12px;
+
+  & div {
+    display: block;
+    width: 100%;
+
+    .name {
+      font-weight: 700;
+      font-size: $font-medium;
+    }
+    .category {
+      font-weight: 300;
+      font-size: $font-small;
+    }
+  }
+}
+.details {
+  font-size: $font-medium;
+  padding: 16px 12px;
+  .phone, .twitter {
+    padding-top: 26px;
+  }
+}
+.gmap {
+  width:100%;
+  height: 180px;
+}
